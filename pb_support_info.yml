@@ -24,3 +24,4 @@
     - name: Download Logs
       ansible.netcommon.net_get:
         src: /var/tmp/{{ inventory_hostname }}-{{ '%Y-%m-%d' | strftime }}-logs.tgz
+        dest: /tmp/
