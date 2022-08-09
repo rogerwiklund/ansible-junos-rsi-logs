@@ -1,5 +1,5 @@
 ---
-- name: Generate and download RSI and Log files
+- name: Generate and download RSI and log files
   hosts: qfx5120-48y-01
   connection: network_cli
   gather_facts: no
@@ -21,7 +21,7 @@
         src: /var/tmp/{{ inventory_hostname }}-{{ '%Y-%m-%d' | strftime }}-rsi.txt
         dest: /tmp/
 
-    - name: Download Logs
+    - name: Download logs
       ansible.netcommon.net_get:
         src: /var/tmp/{{ inventory_hostname }}-{{ '%Y-%m-%d' | strftime }}-logs.tgz
         dest: /tmp/
