@@ -1,0 +1,26 @@
+---
+- name: Generate and download RSI and Log files
+  hosts: qfx5120-48y-01
+  connection: network_cli
+  gather_facts: no
+  vars:
+    ansible_network_os: junipernetworks.junos.junos
+    ansible_command_timeout: 600
+
+  tasks:
+    - name: Request support information
+      junipernetworks.junos.junos_command:
+        commands: "request support information | save /var/tmp/{{ inventory_hostname }}-{{ '%Y-%m-%d' | strftime }}-rsi.txt"
+
+    - name: Compress logs files
+      junipernetworks.junos.junos_command:
+        commands: "file archive compress source /var/log/* destination /var/tmp/{{ inventory_hostname }}-{{ '%Y-%m-%d' | strftime }}-logs.tgz"
+
+    - name: Download RSI
+      ansible.netcommon.net_get:
+        src: /var/tmp/{{ inventory_hostname }}-{{ '%Y-%m-%d' | strftime }}-rsi.txt
+        dest: /tmp/
+
+    - name: Download Logs
+      ansible.netcommon.net_get:
+        src: /var/tmp/{{ inventory_hostname }}-{{ '%Y-%m-%d' | strftime }}-logs.tgz
