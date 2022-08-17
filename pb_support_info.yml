@@ -6,7 +6,7 @@
   vars:
     ansible_network_os: junipernetworks.junos.junos
     ansible_command_timeout: 600
-    ansible_network_cli_ssh_type: libssh
+    ansible_network_cli_ssh_type: paramiko
 
   tasks:
     - name: Request support information
