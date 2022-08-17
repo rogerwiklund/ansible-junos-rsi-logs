@@ -3,7 +3,7 @@ Ansible Playbook to collect and download RSI and Logs from Juniper devices.
 Requires ansible-pylibssh, install with pip install ansible-pylibssh
 Tested on:
 
-ansible [core 2.13.3]
+```ansible [core 2.13.3]
   config file = /etc/ansible/ansible.cfg
   configured module search path = ['/home/user/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/local/lib/python3.8/dist-packages/ansible
