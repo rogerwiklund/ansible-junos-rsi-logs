@@ -1,6 +1,6 @@
 ---
 - name: Generate and download RSI and log files
-  hosts: qfx5120-48y-01
+  hosts: host_or_group
   connection: ansible.netcommon.network_cli
   gather_facts: no
   vars:
