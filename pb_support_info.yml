@@ -1,11 +1,12 @@
 ---
 - name: Generate and download RSI and log files
   hosts: qfx5120-48y-01
-  connection: network_cli
+  connection: ansible.netcommon.network_cli
   gather_facts: no
   vars:
     ansible_network_os: junipernetworks.junos.junos
     ansible_command_timeout: 600
+    ansible_network_cli_ssh_type: libssh
 
   tasks:
     - name: Request support information
